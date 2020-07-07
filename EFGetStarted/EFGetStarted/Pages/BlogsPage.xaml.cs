@@ -24,8 +24,7 @@ namespace EFGetStarted
                 await InsertStartData(blogContext);
 
                 var theBlogs = blogContext.Blogs.ToList();
-
-                blobCollectionView.ItemsSource = null;
+                
                 blobCollectionView.ItemsSource = theBlogs;
             }
         }
@@ -60,18 +59,12 @@ namespace EFGetStarted
         async void DeleteAll_Clicked(object sender, EventArgs e)
         {
             using (var blogContext = new BloggingContext())
-            {
-                foreach (var item in blogContext.Blogs)
-                {
-                    blogContext.Remove(item);
-                }
+            {                
+                blogContext.RemoveRange(blogContext.Blogs);
 
                 await blogContext.SaveChangesAsync();
-
-                var theBlogs = blogContext.Blogs.ToList();
-
-                blobCollectionView.ItemsSource = null;
-                blobCollectionView.ItemsSource = theBlogs;
+                
+                blobCollectionView.ItemsSource = blogContext.Blogs.ToList();
             }
         }
     }

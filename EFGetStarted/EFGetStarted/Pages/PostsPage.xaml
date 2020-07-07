@@ -6,6 +6,7 @@
     Title="Blog Posts">
     <ContentPage.Content>
         <CollectionView x:Name="postCollection">
+
             <CollectionView.ItemTemplate>
                 <DataTemplate>
                     <StackLayout Padding="10">
@@ -15,12 +16,14 @@
                     </StackLayout>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
+
             <CollectionView.EmptyView>
                 <StackLayout>
                     <Label VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
                            Text="No posts for this blog"/>
                 </StackLayout>
             </CollectionView.EmptyView>
+
         </CollectionView>
     </ContentPage.Content>
 
